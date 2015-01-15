@@ -1,0 +1,168 @@
+new_MCD_rev6.jpg
+
+Table-Column Definitions
+------------------------
+
+TABLE: animal
+	animalId	int(10)
+	specieId	int(10)
+	raceId	int(10)
+	clientId	int(10)
+	genderTypeId	int(2)
+	animalName	varchar(25)
+	identified	tinyint(1)
+	active	tinyint(1)
+	vaccinated	tinyint(1)
+	birthDate	datetime
+	deathDate	datetime
+	avePurchase	decimal(8,2)
+	aveVisitPerYear	int(3)
+
+TABLE: animalEventLog
+	aelId	int(10)
+	animalEventId	int(10)
+	animalId	int(10)
+
+TABLE: animalEventType
+	animalEventId	int(10)
+	animalEventName	varchar(35)
+
+TABLE: animalPathology
+	animalPathologyId	int(10)
+	animalId	int(10)
+	pathologyId	int(10)
+	pathologyStatus	tinyint(1)
+	diagnosticDate	datetime
+
+TABLE: autoProc
+	autoProcId	int(10)
+	messageId	int(10)
+	subscriberId	int(10)
+	procType	enum('one','two','recur','group')
+	procName	varchar(50)
+	priority	tinyint(1)
+	procPractice	tinyint(1)
+	procActive	tinyint(1)
+	refDateId	int(10)
+	offset	int(4)
+	anticipation	int(4)
+	singleRefDateId	int(10)
+	singleRefDateUsed	tinyint(1)
+	specieIdGenderCsvc	varchar(50)
+	cdbfIdValueCsvc	varchar(50)
+	unlessConditionCsvc	varchar(50)
+	groupSendDate	datetime
+
+TABLE: channelType
+	channelId	int(10)
+	channelName	varchar(25)
+
+TABLE: client
+	clientId	int(10)
+	preferredChannelId	int(10)
+	backupChannelId	int(10)
+	nixedChannelId	int(10)
+	honorary	varchar(5)
+	lastName	varchar(25)
+	firstName	varchar(25)
+	noMessage	tinyint(1)
+	email	varchar(75)
+	homeAddress1	varchar(100)
+	homeAddress2	varchar(100)
+	homeCity	varchar(25)
+	homePostalCode	varchar(10)
+	homeProvinceOrState	varchar(25)
+	officeAddress1	varchar(100)
+	officeAddress2	varchar(100)
+	officeCity	varchar(25)
+	officePostalCode	varchar(10)
+	officeProvinceOrState	varchar(25)
+	country	varchar(25)
+	messageMinPriority	tinyint(1)
+
+TABLE: clientPhone
+	clientPhoneId	int(10)
+	clientId	int(10)
+	priority	tinyint(4)
+	phoneType	enum('cell','home','office')
+	phoneNumber	varchar(15)
+
+TABLE: commPlan
+	subscriberId	int(10)
+	sendingWeekdays	varchar(7)
+	sendingHoursCsv	varchar(5)
+	thisPriorityOrLess	tinyint(1)
+	clientQuotaCsv	varchar(15)
+
+TABLE: criterionDbField
+	cdbfId	int(10)
+	cdbfTable	varchar(25)
+	cdbfColumn	varchar(35)
+	cdbfColumnType	varchar(25)
+
+TABLE: followUp
+	followUpId	int(10)
+	autoProcId	int(10)
+	animalId	int(10)
+	clientId	int(10)
+	subscriberId	int(10)
+	messageId	int(10)
+	consolidateSpecieId	int(10)
+	priority	tinyint(1)
+	sendDate	datetime
+	isReminder	tinyint(1)
+
+TABLE: genderType
+	genderTypeId	int(2)
+	genderName	varchar(35)
+
+TABLE: message
+	messageId	int(10)
+	messageTypeId	int(10)
+	messageTitle	varchar(50)
+	messageBody	text
+	isPractice	tinyint(1)
+	channel	enum('SMS','voice','email','snailmail')
+
+TABLE: messageQueueLog
+	mqlId	int(10)
+	messageStatusId	int(10)
+	sendUnixtime	varchar(10)
+	channel	varchar(25)
+	phone	varchar(15)
+	message	text
+	autoProcId	int(10)
+	clientId	int(10)
+	animalId	int(10)
+
+TABLE: messageStatusType
+	messageStatusId	int(10)
+	messageStatus	varchar(25)
+
+TABLE: messageType
+	messageTypeId	int(10)
+	subscriberId	int(10)
+	messageTypeName	varchar(35)
+
+TABLE: pathologyType
+	pathologyId	int(10)
+	pathologyName	varchar(50)
+
+TABLE: raceType
+	raceId	int(10)
+	specieId	int(10)
+	raceName	varchar(35)
+
+TABLE: specieType
+	specieId	int(10)
+	specieName	varchar(35)
+
+TABLE: subscriber
+	subscriberId	int(10)
+	subscriberLogin	varchar(25)
+	subscriberPassword	varchar(50)
+	subscriberLanguage	varchar(2)
+	subscriberProfession	varchar(25)
+	subscriberEmail	varchar(75)
+
+-- end --

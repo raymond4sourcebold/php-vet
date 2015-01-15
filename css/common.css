@@ -1,0 +1,509 @@
+/**
+ * The following standardize rendering on cross-browser.
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+/*fieldset,*/ form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	/*background: #DDDDDD;*/
+	width: 800px;
+	margin:auto;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+/**
+ * common CSS for the site
+ */
+.autoHidePane {
+	position: absolute;
+	display: none;
+	top: 0px;
+	left: 50%;
+	margin-left: -300px;
+	width: 600px;
+	text-align: left;
+	background: #edf5e1;
+	padding: 10px 20px;
+	border: 1px solid #c4df9b;
+	border-top: solid 2px #c4df9b;
+}
+.autoHidePane .autoHidePaneDelete {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+.hoverhand {
+	cursor: pointer;
+}
+.commonImage {
+	border: 0;
+}
+.headSort {
+	cursor: pointer;
+}
+.headerSortUp {
+	background: url(/images/tablesorter_desc.gif) no-repeat;
+	background-position: center right;
+}
+.headerSortDown {
+	background: url(/images/tablesorter_asc.gif) no-repeat;
+	background-position: center right;
+}
+
+/**
+ * Following are shade definitions
+ */
+.f0ShadeHover {
+	background-color: #F0F0F0;
+}
+.f0ShadeHover:hover{
+	background-color: #DDDDDD;
+}
+.lightHead {
+	background-color: #FAF7DC;
+}
+.whitebg {
+	background-color: #FFFFFF;
+	height: 100%;
+}
+
+/**
+ * fieldset style
+ */
+/*fieldset { 
+	border: 1px solid #666666;
+}
+*/
+legend {
+	padding: 0.2em 0.5em;
+	/*border: 1px groove #E3E3E3;
+	color: #E3E3E3;
+	text-align:right;*/
+	font-size:90%;
+}
+
+p {
+	padding: 7px 0;
+}
+
+/** --------------------------------------------------------------------------------------------------------------------
+ * Below are menu related CSS.
+ * --------------------------------------------------------------------------------------------------------------------- */
+body {
+	behavior:url('/css/csshover.htc');
+}
+
+/**
+ * For info display.  This appears when hovering over "?"
+ */
+#info {
+	position:relative;
+}
+.divinfo {
+	display: inline;
+}
+
+/* info using div */
+div.info{
+    position: relative; 
+    z-index: 24;
+    color: #000000;
+    text-decoration: none;
+}
+
+div.info:hover { 
+	z-index: 25;
+	/*background-color: #6699CC;*/
+}
+
+div.info span {
+	display: none;
+}
+
+div.info:hover span { 
+	display: block; 
+	position: absolute; 
+	top: 30px;
+	/*left: -200px;*/
+	/*width: 200px;*/
+	border-width: 1px;
+	border-style: solid;
+	border-color: #6699CC;
+	background-color: #EEEEEE;
+	color: #6699CC;
+	text-align: justify;
+	font-weight: none;
+	padding: 10px;
+}
+/* above: info using div */
+
+p.bold {
+	padding-left:15px; 
+	color:#c00;
+}
+a.linkup {
+	position:relative;
+}
+a.buttonup {
+	position:absolute; 
+	top:200px; 
+	left:650px; 
+	border:0;
+}
+a.buttonup img {
+	border:0;
+}
+.gleft {
+	float:left; 
+	margin:25px 0 10px 0;
+}
+.gright {
+	float:right; 
+	margin:25px 5px 10px 0;
+}
+.grc {
+	margin:20px 0 0 10px;
+}
+
+
+.menu {
+	width:745px; 
+	height:32px; 
+	position:relative; 
+	z-index:100;
+	border-right:1px solid #FFFFF0;
+	font-family: 'Courier New', Arial;
+	font-size: 12px;
+	/*background: url(/images/main-menu-right.png) no-repeat;*/
+	/*background: url(/images/logout.gif) no-repeat;*/
+	background-position: center right;
+	/*padding-right: 12px;*/
+	/*padding-right: 30px;*/
+}
+
+/* hack to correct IE5.5 faulty box model */
+* html .menu {
+	width:746px; 
+	w\idth:745px;
+}
+
+/* remove all the bullets, borders and padding from the default list styling */
+.menu ul {
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+.menu ul ul {
+	width:149px;
+}
+
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+.menu li {
+	float:left;
+	width:149px;
+	position:relative;
+}
+
+/* style the links for the top level */
+.menu a, .menu a:visited {
+	display:block;
+	font-size:12px;
+	text-decoration:none; 
+	color:#333333; 
+	width:138px; 
+	height:30px; 
+	border:1px solid #FFFFF0;
+	border-width:1px 0 1px 0; 
+	background:#DDDDDD; 
+	padding-left:10px; 
+	line-height:29px;
+}
+
+/* a hack so that IE5.5 faulty box model is corrected */
+* html .menu a, * html .menu a:visited {
+	width:149px; 
+	w\idth:138px;
+}
+
+/* style the second level background */
+.menu ul ul a.drop, .menu ul ul a.drop:visited {
+	background:#EEEEEE url(/images/menu-drop.gif) bottom right no-repeat;
+}
+
+/* style the second level hover */
+.menu ul ul a.drop:hover{
+	background:#DDDDDD url(/images/menu-drop.gif) bottom right no-repeat;
+	/*font-weight:bold;*/
+}
+.menu ul ul :hover > a.drop {
+	background:#DDDDDD url(/images/menu-drop.gif) bottom right no-repeat;
+	/*font-weight:bold;*/
+}
+
+/* style the third level background */
+.menu ul ul ul a, .menu ul ul ul a:visited {
+	background:#EEEEEE;
+}
+
+/* style the third level hover */
+.menu ul ul ul a:hover {
+	background:#DDDDDD;
+	/*font-weight:bold;*/
+}
+
+
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+.menu ul ul {
+	visibility:hidden;
+	position:absolute;
+	height:0;
+	top:31px;
+	left:0; 
+	width:149px;
+	border-top:1px solid #FFFFF0;
+}
+
+/* another hack for IE5.5 */
+* html .menu ul ul {
+	top:30px;
+	t\op:31px;
+}
+
+/* position the third level flyout menu */
+.menu ul ul ul{
+	left:149px; 
+	top:-1px; 
+	width:149px;
+}
+
+/* position the third level flyout menu for a left flyout */
+.menu ul ul ul.left {
+	left:-149px;
+}
+
+/* style the table so that it takes no ppart in the layout - required for IE to work */
+.menu table {
+	position:absolute; 
+	top:0; 
+	left:0; 
+	border-collapse:collapse;
+}
+
+/* style the second level links */
+.menu ul ul a, .menu ul ul a:visited {
+	background:#EEEEEE; 
+	color:#333333; 
+	height:auto; 
+	line-height:1em; 
+	padding:5px 10px; 
+	width:128px;
+	border-width:0 1px 1px 1px;
+}
+
+/* yet another hack for IE5.5 */
+* html .menu ul ul a, * html .menu ul ul a:visited {
+	width:150px;
+	w\idth:128px;
+}
+
+/* style the top level hover */
+.menu a:hover, .menu ul ul a:hover{
+	color:#333333; 
+	background:#DDDDDD;
+	/*font-weight:bold;*/
+}
+.menu :hover > a {
+	color:#333333;
+	background:#BBBBBB;
+	font-weight:bold;
+}
+.menu ul ul :hover > a {
+	color:#333333;
+	background:#DDDDDD;
+	font-weight:bold;
+}
+
+/* make the second level visible when hover on first level list OR link */
+.menu ul li:hover ul,
+.menu ul a:hover ul{
+	visibility:visible; 
+	/*font-style:italic;*/
+}
+
+/* keep the third level hidden when you hover on first level list OR link */
+.menu ul :hover ul ul{
+	visibility:hidden;
+	font-weight:normal;
+}
+
+/* make the third level visible when you hover over second level list OR link */
+.menu ul :hover ul :hover ul{ 
+	visibility:visible;
+	/*font-weight:bold;*/
+}
+
+/** --------------------------------------------------------------------------------------------------------------------
+ * Above are menu related CSS.
+ * --------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * Common entry form element CSS.
+ */
+.updateButtonFamily {
+	display: none;
+}
+
+#updateMsgButton {
+	margin-left: 50px;
+}
+
+.clearBoth {
+	clear: both;
+}
+
+.capEnt {
+	padding: 4px 0;
+}
+
+.capEntFloatLeft {
+	float: left;
+	padding: 4px 0;
+}
+
+.floatLeft {
+	float: left;
+}
+.floatRight {
+	float: right;
+}
+
+#autoHideTitle {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.numericEntry {
+	text-align: right;
+}
+
+.divWhiteEmbossed {
+	background-color: white;
+	border: 1px groove;
+	padding: 1px 8px;
+}
+
+.ajaxOk {
+	margin: 0 5px;
+	background-color: #BBFFBB;
+	padding: 2px 5px;
+	font-style: italic;
+}
+.ajaxNotOk {
+	margin: 0 5px;
+	background-color: #FFCCBB;
+	padding: 2px 5px;
+	font-style: italic;
+}
+
+/**
+ * Procedure CSS
+ */
+.procmenu {
+	width: 700px;
+	margin: 0px auto;
+	font-family: 'Courier New' Arial;
+	font-size: 12px;
+	height: 31px;
+	background-color: #DDDDDD;
+}
+.procmenu li {
+	float: left;
+	height: 31px;
+	line-height: 31px;
+	vertical-align: middle;
+	margin-right: 1px;
+	background-color: white;
+	padding: 0 10px;
+}
+#procStepOn {
+	background-color: #F29400;
+	color: #004A99;
+}
+#procStepDone {
+	background-color: #BBBBBB;
+}
+
+input, select, textarea {
+	font-size: 0.9em;
+}
+
+#tooltip{
+	position:absolute;
+	border:1px solid #333;
+	background:#f7f5d1;
+	padding:2px 5px;
+	color:#333;
+	display:none;
+}	
+
+/**
+ * Used to display number of matched rows on search
+ */
+#nMatchCount {
+	font-size: 0.8em;
+	font-family: Arial;
+	padding: 3px 5px 3px 10px;
+	color: #00FF00;
+	background-color: #000000;
+	display: none;
+}
+
+/**
+ * Used to emphasize a text in a paragraph
+ */
+.emphasize {
+        color: #000000;
+        background-color: #EEEEEE;
+        font-family: 'Courier New' Arial;
+        padding: 0 7px;
+}

@@ -1,0 +1,568 @@
+;
+; main.ini
+; Language: fr
+;
+; Instructions to the translator:
+;   1. DO NOT change anything BEFORE the equal "=" sign
+;      Translate the words AFTER the equal "=" sign
+;	Sample:
+; 		leave_me_as_is		= "Translate me please!"
+;   2. Enclose group of words in quotes, e.g. "group of words"
+;   3. A single word do not need to be enclosed in quotes except for the words "True", "False", "Yes" and "No" which must be enclosed within quotes.
+;   4. Keep case of letters whenever applicable
+;
+
+[COMMON]
+processing			= Traitement en cours
+success				= "Succès"
+failure				= Echec
+empty				= vide
+animal_name			= "Nom de l'animal"
+external_id			= "Identifiant Externe"
+gender				= Genre
+breed				= Race
+cancel_update			= "Annuler la mise à jour"
+name				= Nom
+specie				= Espèce
+species				= Espèces
+race				= Race
+genders				= Genres
+phone_number			= "Numéro de téléphone"
+priority			= Priorité
+remove_this_line		= "Effacer cette ligne"
+honorary			= Titre
+first_name			= "Prénom"
+last_name			= "Nom"
+send_date			= "Envoyer la date"
+proc				= Proc
+urgency				= Urgence
+category			= Catégorie
+status				= Statut
+message				= Message
+description			= Description
+word_yes			= "Oui"
+word_no				= "Non"
+word_true			= "Vrai"
+word_false			= "Faux"
+or				= ou
+all				= Tous
+undo_changes			= "Annuler le changement"
+back				= Retour
+proceed				= Continuer
+back_previous_step		= "Retour à l'étape précédente"
+proceed_next_step		= "Passer à l'étape suivante"
+reload_page			= "Recharger la page sans enregistrer les dernières modifications"
+consolidate			= Consolider
+Décalage				= Décalage
+anticipation			= Anticipation
+if_crit_a			= "Critère 'SI' A"
+unless_crit_b			= "Critère 'SAUF SI' B"
+reminders			= Rappels
+punch_list			= "Liste"
+owner				= Propriétaire
+step				= Etape
+practice			= Professionnel(le)
+active				= Actif
+recurring_period		= "Réccurence"
+comparison_operator		= "Opérateur de comparaison"
+unknown_error			= "Erreur inconnue: une erreur inattendue est survenue!"
+
+[DATE_TIME]
+day				= jour
+week				= semaine
+month				= mois
+semester			= semestre
+year				= année
+
+; plural
+days				= jours
+weeks				= semaines
+months				= mois
+years				= années
+
+[FORM_VALUES]
+optional_text_value		= "(facultatif)"
+dropdown_select			= "-- sélectionner --"
+dropdown_empty			= "-- vide --"
+dropdown_select_channel		= "-- sélectionner le canal --"
+dropdown_select_category	= "-- sélectionner la catégorie --"
+dropdown_select_message		= "-- sélectionner le message --"
+dropdown_pick_refdate		= "-- sélectionner la date de référence --"
+dropdown_target_evtdate		= "-- Date de l'événement cible --"
+dropdown_remind_duration_1	= "-- Rappel de durée 1 --"
+dropdown_remind_duration_2	= "-- Rappel de durée 2 --"
+dropdown_multi_refdate		= "-- sélectionner date de référence multiple --"
+dropdown_single_refdate		= "-- sélectionner date de référence unique --"
+dropdown_refdate_1		= "-- sélectionner date de référence 1 --"
+dropdown_refdate_2		= "-- sélectionner date de référence 2 --"
+
+[COMMON_VERBS]
+delete				= Supprimer
+modify				= Modifier
+save				= Sauvegarder
+select				= Sélectionner
+copy				= Copier
+cancel				= Annuler
+
+[COMMON_PHRASES]
+correct_the_following		= "Corriger :"
+no_message_create_first		= "Vous n'avez aucun message disponible. Merci d'en créer d'abord."
+is_proc_recurring		= "La procédure est-elle récurrente ?"
+
+[MESSAGE_LEVELS]
+life_death_issue		= "question de vie ou de mort"
+billing_issue			= "question de facturation"
+significant_issue		= "point de santé important"
+appointment_reminder		= "rappel de rendez-vous"
+prevention			= prévention
+education			= éducation
+
+[QUESTIONS]
+confirm_are_you_sure		= "Etes-vous sûr ?"
+confirm_delete_client		= "Etes-vous sûr de vouloir supprimer ce client ?"
+confirm_delete_followup		= "Etes-vous sûr de vouloir supprimer ce suivi?"
+confirm_delete_gender		= "Etes-vous sûr de vouloir supprimer ce genre ?"
+confirm_delete_message		= "Etes-vous sûr de vouloir supprimer ce message ?"
+confirm_delete_proc		= "Etes-vous sûr de vouloir supprimer cette procédure ?"
+confirm_delete_breed		= "Etes-vous sûr de vouloir supprimer cette race ?"
+confirm_delete_specie		= "Etes-vous sûr de vouloir supprimer cette espèce?"
+confirm_delete_animal		= "Etes-vous sûr de vouloir supprimer cet animal ?"
+confirm_delete_criterion	= "Etes-vous sûr de vouloir supprimer ce critère ?"
+
+[PLEASE_WAIT_MESSAGES]
+matching_similar_owner		= "Recherche de noms de propriétaires identiques, merci de patienter"
+matching_similar_animal		= "Recherche de noms d'animaux identiques, merci de patienter"
+matching_similar_client		= "Recherche de noms de clients identiques, merci de patienter"
+wait_procname_availability	= "Vérification de disponibilité du nom de procédure, merci de patienter"
+wait_reading_database		= "Parcours des données, merci de patienter"
+wait_reading_client		= "Lecture des informations clients en cours, merci de patienter"
+wait_reading_phone_numbers	= "Lecture des numéros de téléphone en cours, merci de patienter"
+wait_reading_animal		= "Lecture des informations sur l'animal en cours, merci de patienter"
+wait_deleting_client		= "Suppression du client en cours, merci de patienter"
+wait_deleting_followup		= "Suppression du suivi en cours, merci de patienter"
+wait_deleting_gender		= "Suppression du genre en cours, merci de patienter"
+wait_deleting_message		= "Suppression du message en cours, merci de patienter"
+wait_deleting_proc		= "Suppression de la procédure en cours, merci de patienter"
+wait_deleting_specie		= "Suppression de l'espèce en cours, merci de patienter"
+wait_deleting_animal		= "Suppression de l'animal en cours, merci de patienter"
+wait_deleting_criterion		= "Suppression du critère en cours, merci de patienter"
+
+[LOGIN]
+; controller
+session_terminated		= "Vous avez été déconnecté"
+wrong_magic_word		= "Erreur d'authentification"
+
+; template
+user				= Utilisateur
+password			= Mot de passe
+connect				= Connexion
+
+; javascript
+enter_user			= "Merci de saisir le nom d'utilisateur."
+enter_user_password		= "Merci de saisir nom d(utilisateur et mot de passe."
+enter_password			= "Merci de saisir le mot de passe."
+
+[SEARCH]
+; template
+owners_name			= "Nom du propriétaire"
+or_animals_name			= "ou nom de l'animal"
+owner				= Propriétaire
+town				= Ville
+
+[ANIMALS]
+; controller
+animal_saved			= "L'animal a été correctement sauvegardé."
+animal_updated			= "L'animal a été correctement mis à jour."
+
+; template helper
+deceased			= décédé
+
+; template
+click_new_animal		= "Cliquer ici pour créer un nouvel animal"
+birth_date			= "Date de naissance"
+death_date			= "Date de décès"
+identified			= Identifié
+vaccinated			= Vacciné
+insured				= Assuré
+add_animal			= "Ajouter un animal"
+update_animal			= "Mettre à jour l'animal"
+
+; javascript
+hide_new_animal_form		= "Masquer le formulaire de saisie du nouvel animal"
+pls_enter_valid_deathdate	= "Merci de saisir une date de décès valide."
+pls_enter_valid_birthdate	= "Merci de saisir une date de naissance valide."
+pls_select_specie		= "Merci de sélectionner l'espèce."
+pls_select_animal_gender	= "Merci de sélectionner le genre de animal."
+pls_enter_animal_name		= "Merci de saisir le nom de l'animal."
+animal_deletion_ok		= "Suppression de l'animal effectuée."
+animal_deletion_error		= "Une erreur est survenue lors de la suppression de l'animal."
+
+[CLIENTS]
+; controller
+client_saved			= "Le client a été correctement sauvegardé."
+client_updated			= "Le client a été correctement mis à jour."
+
+; template helper
+continue_sending_msg		= "Continuez à envoyer des messages"
+stop_sending_msg		= "Arrêter d'envoyer des messages"
+lower_value_higher_priority	= "1 pour priorité maximale, 5 pour priorité minimale."
+help_phone_priority		= "Cette <b>Priorité</b> est utilisée uniquement lorsque plus d'un numéro du même type est fourni."
+
+; template
+click_new_client		= "Cliquer ici pour créer un nouveau client"
+control_flow			= "Contrôle de flux"
+sending_status			= "Etat de l'envoi en cours"
+message_threshold		= "Seuil de message"
+contact				= Contact
+web				= Web
+primary_email			= "Email principal"
+secondary_email			= "Email secondaire"
+phone				= Téléphone
+add_a_phone			= "Ajouter un téléphone"
+
+address				= Adresse
+home_address			= "Adresse du domicile"
+address_line_1			= "Adresse ligne 1"
+address_line_2			= "Adresse ligne 2"
+city				= Ville
+postal_code			= "Code postal"
+province_or_state		= "Région ou département"
+clear_home_address		= "Effacer l'adresse du domicile uniquement"
+office_address			= "Adresse professionnelle"
+clear_office_address		= "Effacer l'adresse professionnelle uniquement"
+country				= Pays
+channel				= "Mode d'envoi"
+
+channel_settings		= "Réglage du mode"
+preferred_channel		= "Mode favori"
+use_preferred_exclusively	= "Utiliser exclusivement le mode favori"
+backup_channel			= "Mode de secours"
+nixed_channels			= "Mode interdit"
+
+add_client			= "Ajouter client"
+update_client			= "Mettre à jour client"
+
+first_letters_client		= "Premières lettres du nom du client"
+
+; javascript
+hide_client_form		= "Masquer le formulaire de saisie de nouveau client"
+goto_animal_manager		= "Aller à la gestion des animaux"
+invalid_client_home_address	= "Merci de compléter ou d'effacer l'adresse de domicile du client."
+invalid_client_office_address	= "Merci de compléter ou d'effacer l'adresse professionnelle du client."
+invalid_client_country		= "Merci de saisir le pays du client."
+invalid_first_name		= "Merci de saisir le prénom du client."
+invalid_last_name		= "Merci de saisir le nom du client."
+invalid_honorary		= "Merci de sélectionner un titre."
+invalid_phone			= "Merci de compléter ou d'effacer le numéro de téléphone"
+
+client_delete_ok		= " Suppression du client terminée."
+client_delete_error		= "Une erreur est survenue pendant la suppression du client."
+
+[COMM_PLAN]
+; template
+communication_plan		= "Plan de communication "
+message_sending_threshold	= "Priorité minimale d'envoi"
+per_client_quota		= "Quota d'envoi client"
+limit_priority_under		= "Priorité inférieure à"
+quota_duration			= "Durée pour calcul du quota"
+quantity			= quantité
+
+; javascript
+invalid_quantity_client_quota	= "Merci de saisir le quota client."
+
+[CRITERIA]
+; controller
+criterion_saved			= "Le critère a été correctement sauvegardé."
+criterion_updated		= "Le critère a été correctement mis à jour."
+
+; template
+click_new_criteria		= "Cliquer ici pour créer un nouveau critère"
+criteria_ini_code		= "Code du critère INI"
+add_criterion			= "Ajouter critère"
+update_criterion		= "Mettre à jour critère"
+type				= Type
+ini_code			= "code INI"
+criteria_caption		= "Légende critère"
+
+; javascript
+hide_new_criterion_form		= "Masquer le formulaire de saisie du nouveau critère"
+pls_enter_caption		= "Merci de saisir une légende."
+criterion_deletion_ok		= "Suppression du critère terminée."
+criterion_deletion_error	= "Une erreur est survenue pendant la suppression du critère."
+
+[FOLLOW_UP]
+; controller
+duplicate_error			= "Tentative de duplication : déjà existant."
+followup_saved			= "Le suivi a été correctement sauvegardé."
+followup_updated		= "Le suivi a été correctement mis à jour."
+
+; template helper
+done				= Effectué
+next_in_line			= Prochain
+reminder			= rappel
+
+; template
+click_new_followup		= "Cliquer ici pour ajouter un suivi"
+msg_is_for			= "Ce message est pour"
+which_belongs_to		= "qui appartient à"
+msg_will_be_sent_in		= "Ce message sera envoyé dans"
+msg_will_be_sent_by		= "Ce message sera envoyé par"
+to				= à
+send_this_msg			= "Envoyer ce message"
+add_followup			= "Ajouter suivi"
+update_followup			= "Mettre à jour suivi"
+
+; javascript
+hide_followup_form		= "Masquer le formulaire de saisie de nouveau suivi"
+invalid_message			= "Merci de sélectionner un message."
+followup_deleted		= "Suppression du suivi terminée."
+followup_deletion_error		= "Une erreur est survenue pendant la suppression du suivi."
+
+[GENDERS]
+; controller
+gender_saved			= "Le genre a été correctement sauvegardé."
+gender_updated			= "Le genre a été correctement mis à jour."
+
+; template
+click_new_gender		= "Cliquer ici pour ajouter un genre"
+add_gender			= "Ajouter genre"
+update_gender			= "Mettre à jour genre"
+
+; javascript
+hide_gender_form		= "Masquer le formulaire de saisie de nouveau genre"
+invalid_gender			= "Merci de saisir un genre."
+gender_deletion_ok		= "Suppression du genre terminée."
+gender_deletion_error		= "Une erreur est survenue pendant la suppression du genre."
+
+[MESSAGES]
+; controller
+message_saved			= "Votre message a été correctement sauvegardé."
+message_updated			= "Votre message a été correctement mis à jour."
+
+; template helper
+new_type			= "Nouveau type"
+
+; template
+click_new_message		= "Cliquer ici pour ajouter un nouveau message"
+active_for_practice		= "Activer pour toute la clientèle"
+add_message			= "Ajouter un message"
+update_message			= "Mettre à jour un message"
+
+; javascript
+click_new_message		= "Cliquer ici pour ajouter un nouveau message"
+hide_message_form		= "Masquer le formulaire de saisie de nouveau message"
+invalid_message			= "Merci de saisir message"
+invalid_description		= "Merci de saisir description."
+invalid_category		= "Merci de saisir nouvelle catégorie."
+message_deletion_ok		= "Suppression du message terminée."
+message_deletion_error		= "Une erreur est survenue pendant la suppression du message."
+
+[PROC_COMPLETE]
+; template helper
+all_species			= "Toutes espèces"
+all_genders			= "Tous genres"
+goto_start			= "Aller au début"
+one_step			= "Une étape"
+two_step			= "Deux étapes"
+group				= Groupe
+not_set				= "Non défini"
+procédure_recurs_every		= "Cette procédure se répète chaque"
+congrats_proc_complete		= "Félicitations, vous avez terminé l'installation de la procédure pour"
+this_you_put_in_place		= "Voici ce que vous avez mis en place"
+uc_send				= ENVOYER
+uc_if				= SI
+practice_procédure		= "Procédure métier"
+active_procédure		= "Procédure active"
+
+[PROC_GROUP]
+; template
+you_successfully_chose_proctype	= "<p>Type de procédure correctemeny choisi! Vous allez maintenant définir la date d'envoi, si votre Procédure est récurrente et, si oui, la Période de Récurrence après laquelle la procédure sera réactivée.</p><p>La Date d'Envoi est calculée de façon absolue.</p><p>Date d'Envoi= Date Absolue</p><p>Vous pouvez choisr de relancer la Procédure indéfiniment, après chaque Période de récurrence</p>"
+important_senddate_validity	= "<p>Note Importante : validité de la Date d'Envoi<br />Si la Date d'Envoi ne peut être programmée (champs manquants pour le calcul, ou résultat du calcul déjà passé), ContactMaster considère la Procédure non Valide pour le Client en question.</p><p>Note Importante : Mécanisme de la  Récurrence<br />Pour utiliser la récurrence, ContactMaster calcule la première Date d'Envoi Récurrente se trouvant dans le futur et l'utilise comme Date d'Envoi pour cette instance.</p>"
+invalid_date			= "Merci de saisir une date valide."
+
+[PROC_IF_CRIT_A]
+; template helper
+true_slash_false		= "Vrai/Faux"
+quantitative			= Quantitatif
+
+; template
+you_completed_msg_selection	= "<p>Message correctement choisi! Vous allez maintenant programmer le Critère 'SI' A. Le Critère 'SI' A sert à déterminer si un Client donné doit recevoir le message de la procédure.</p><p>Pour simplifier l'écriture, nous n'utiliserons pas de date dans ce critère. Si nous en avons besoin pour déterminer si nous devons envoyer le message, nous le ferons dans le critère 'SAUF SI' de la phase B.</p><p>Si le critère A est vrai, nous enverrons le message automatiquement, sauf si le the criterion B est vrai.</p><p>Nous choisirons d'abord l'(les) espèce(s) et genre(s) à qui s'applique le message.<br />Nous choisirons ensuite autant de critères  vrai/faux ou quantitatifs que nécessaire.<br />Le critère sera vrai si TOUTES ses composantes le sont. Si une seule ne l'est pas, le critère sera faux, et le message non envoyé.</p>"
+specie_s			= "Espèce(s)"
+gender_s			= "Genre(s)"
+add_a_criterion			= "Ajouter un critère"
+select_proc_type		= "Choisir le type de procédure"
+
+; javascript
+invalid_specie			= "Merci de choisir une espèce."
+invalid_gender			= "Merci de choisir un genre."
+invalid_criteria_number		= "Merci de compléter ou de supprimer le numéro du critère"
+
+[PROC_MESSAGE]
+; template
+proc_creation_intro		= "<p>La création d'une Procédure Automatique ou de Groupe s"effectue simplement en 5 étapes.
+			<br />Une Procédure vous permet de demander à ContactMaster de faire autoqmatiquement pour vous les actions suivantes :</p>
+			<p>ENVOYER <i>ce message</i> 
+			<br />SI <i>ce critère A est vrai</i> 
+			<br />A <i>cette date</i>
+			<br />SAUF SI <i>ce critère B est vrai</i></p>
+			<p>ContactMaster va vous guider au long de cette création.</p>
+			<hr />
+			<p>La première étape consiste à décider du message à envoyer et de certaines options relatives au message.
+			<br />Le message doit avoir été créé auparavant dans la Bibliothèque des Messages.</p>"
+procédure_name			= "Nom de la Procédure"
+followup_urgency		= "Urgence du Suivi"
+commplan_squelch_note		= "Attention : en fonction du Plan de Communication de la clibique, certains messages peuvent être repprtés selon leur urgence."
+send_if_animal_dead		= "Envoyer même si Animal décédé"
+
+; javascript
+proc_name_available		= "Ok, nom de procédure disponible."
+proc_name_not_changed		= "Ok, nom de procédure conservé."
+proc_name_you_already_use	= "Nom de procédure déjà utilisé."
+proc_name_exists_already	= "Tentative de duplication : nom existant."
+
+invalid_proc_name		= "Merci de saisir un nom de procédure."
+try_another_proc_name		= "Merci d'essayer un autre nom de procédure."
+
+[PROC_ONE_STEP]
+; template
+one_step_instructions		= "<p>Type de procédure correctement choisi! Vous allez maintenant calculer la Date d'Envoi.</p>
+			<p>La Date d'Envoi est calculée depuis une Date de Référence dans le Dossier Client:</p>
+			<p>Date d'envoi= Date de Référence + Décalage - Anticipation</p>
+			<p>Par exemple, pour un vaccin, vous pouvez choisir :
+			<br />Date d'Envoi = Date Dernier Rappel + Décalage de 1 AN - Anticipation de 1 MOIS</p>
+			<p>Le Décalage est la durée entre la Date de Référence et l'événement que vous souhaitez, comme par exemple, un rappel de vaccin, de prise de sang, ou de radio.</p>
+			<p>L"Anticipation représente la durée du préavis entre le message au Client et l'événement que vous souhaitez lui rappeler.</p>"
+one_step_note			= "<p>Note Importante : 
+			<br />Pour uriliser une Procédure à Une Etape, ContactMaster évaluae d(abord la Date d'envoi pour la date Multi-Référence. Si cette date peut être calculée (tous les champs nécessaires existent) et que le message peut être programmé (le résultat est dans le futur), Alors cela devient la Date d'Envoi. Si cette date ne peut être calculatée ou si le message ne peut être programmé, ContactMaster considère la procédure non Valide pour ce Client.</p>"
+
+; javascript
+pls_select_refdate		= "Merci de choisir la Date de Référence."
+
+[PROC_PUNCH]
+; template helper
+punch_instructions		= "<p>Options de rappel correctement choisies! Vous devez maintenant compléter votre procédure avec quelques options simples.</p>
+			<p>Toutes les  procédures sont dans une Bibliothèque. Il en exisye une grande quantité! Pour les voir dans le club très fermé des utilisables par votre clinique, il vous suffit de les identifier comme procédures Clinique. Cela ne les Activera pas directement, mais vous permettra de les trouver et utiliser plus facilement.</p>
+			<p>Pour déclarer une procédure Automatique ou de Groupe opérationelle et l'exécuter avec CM, elle doit être Activée, auquel cas elle devient Active. Attention! Une fois Active, une procédure va immédiatement commencer à Programmer des Messages vers tous les Clients pour laquelle elle est Valide. N'Activez une procédure que si vous êtes SUR de le vouloir.</p>"
+mark_practice_proc		= "Marquer une procédure comme procédure Clinique"
+activate_proc			= "Activer une procédure"
+finish_proc_process		= "Arrêter le traitement d'une procédure"
+
+; template
+punch_instructions		= "<p>Critère B correctement choisi! Vous devez maintenant décider si vous voulez envoyer des rappels en cas d'oubli de votre Client de l'acte souhaité (s'il existe)</p>
+			<p>Un Client peut parfois ne pas savoir ce que la procédure lui rappelle de faire. Vous pouvez alors dans certains cas vouloir lui rappeler à nouveau. Pour cela, vous devez identifier un événement cible sqitué à un certain nombre de semaines du résultat de Date de Référence + Décalage de la Procédure. Si cette événement ne se produit pas, un rappel :</p>
+			<p>SI (DateEvenementCible - DateReference- Décalage) &lt;= Durée_Rappel NE PAS ENVOYER DE RAPPEL</p>"
+schedule_no_of_reminder		= "Voulez-vous programmer 0, 1, ou 2 rappel de relances ?"
+select_msg_for_reminder		= "Merci de choisir le Message pour les Relances"
+
+[PROC_GRID]
+; controller
+mine				= "A moi"
+cm_proc_copy_ok			= "Procédure CM correctement copiée."
+cm_proc_copy_err_duplicate	= "La copie créerait un doublon. Merci d'essayer un autre nom de procédure."
+cm_proc_copy_err_category	= "Une erreur est survenue pendant la copie de la Catégorie de message de la procédure."
+cm_proc_copy_err_message	= "Une erreur est survenue pendant la copie du message de la procédure."
+cm_proc_copy_err_proc		= "Une erreur est survenue pendant la copie de la procédure."
+
+; template helper
+proc_is_not_complete		= "Cette procédure est incomplète."
+copy_cmi_proc			= "Copie de procédure CMI"
+
+; template
+create_new_proc			= "Créer une nouvelle procédure"
+proc_copy			= "copie de procédure"
+save_it_as			= "Sauvegarder sous"
+proc_delete_ok			= "procédure correctement supprimée."
+proc_delete_error		= "Une erreur est survenue pendant la suppression de la procédure."
+pls_enter_procname		= "Merci de choisir un nom de procédure."
+
+[PROC_REMIND]
+; javascript
+pls_select_evtdate		= "Merci de choisir une date d'événement."
+pls_select_rem_duration_1	= "Merci de choisir le délai de rappel 1."
+pls_select_rem_duration_2	= "Merci de choisir le délai de rappel 2."
+
+[PROC_SELECT_TYPE]
+; template
+proc_seltype_instructions	= "<p>Critère A correctement choisi! Nous devons maintenant calculer la Date d'Envoi.</p>
+			<p>Nous devons cependant décider auparavant de quel type de procédure nous avons besoin.</p>
+			<p>D'abord, un type de procédure simple. Elle peut se déclencher une fois seulement à la suite d'un événement qui n'arrive qu'une fois. Par exemple, nous pouvons vouloir envoyer un message pour une visite de contrôle aux vieux chiens aux alentours de leurs 10 ans. Ou bien elle peut être déclenchée par un événement récurrent régulier, avec un Décalage constant. Par exemple, à chaque visite d'un animal, nous pouvons programmer un message rappelant le prochain contrôle dans 6 mois. 
+			<br />Ce sont les procédures à UNE ETAPE.</p>
+			<p>Ensuite, certaines procédures sont basées sur un événement la première fois, puis sur un autre les fois suivantes. Ceci est très courant. Par exemple, les suivis de vaccins ou de pathologies sont presque tous comme ça. Pour un vaccin, vous programmez un rappel 1 an après la primo-injection ma première fois, puis 1 an après chaque rappel par la suite. Pour une pathologie, par exemple l'insuffisance rénale, vous programmez une analyse d'urine 3 mois après le diagnostic initial, puis 3 mois après chaque analyse par la suite.  
+			<br />Ce sont les procédures à DEUX ETAPES.</p>
+			<p>Enfin, certaines procédures sont déclenchées par un événement, puis se répètent indéfiniment ensuite en se gasant sur l'occurence précédente. Par exemple, l'envoi de voeux pour l'anniversaire d'un animal est déclenché à cette date et répété jusqu'à la fin de sa vie, sans nécessité de recalage. 
+			<br />Ce sont les procédures RECURRENTES.</p>
+			<p>Note Importante : Procédures RECURRENTES ou DEUX ETAPES.
+			De nombreuses procédures semblent Récurrentes, mais sont en réalité à Deux Etapes. La principale différence est de savoir si les occurences futures du message sont ou non recalées sur un événement particulier, comme par exemple un acte effectué lors d'une visite : tets sanguin, analyse, radio... Pour un vaccin par exemple, le premier réflexe est de penser à une procédure Récurrente avec une répétition de 1 an après la primo-injection. En réalité, nous voulons que chaque rappel soit effectué un an après le précédent - sinon nous pourrions envoyer un message qui a déjà effectué le rappel, ou nous décaler progressivement de la réalité de la suite des  of vaccins.</p>"
+select_proc_type		= "Choisir le type de Procédure"
+
+; javascript
+pls_select_proctype		= "Merci de choisir le type de Procédure."
+
+[PROC_TWO_STEP]
+; template
+two_step_instructions		= "<p>Type de procédure correctement choisi! Vous allez maintenant calculer la Date d'Envoi.</p>
+			<p>La Date d'Envoi est calculée à partir d'une date de Référence dans le dossier Client :</p>
+			<p>Date d'envoi= Date de Référence + Décalage - Anticipation</p>
+			<p>Par exemple, pour un vaccin, vous pouvez choisir :
+			<br />Date d'envoi= Date Dernier Rappel + Décalage 1 AN - Anticipation 1 MOIS</p>
+			<p>Le Décalage est le temps entre la the Date de Référence et l'événement que vous souhaitez, par exemple un rappel de vaccion, de test sanguin ou une radio.</p>
+			<p>L'Anticipation exprime le préavis que vous souhaitez pour envoyer le message au Client avant l'événement que vous souhaitez.</p>
+			<p>Vous devez d'abord sélectionner la Date de Référence. Pour une procédure DEUX ETAPES, vous avez 2 Date de Références : celle utilisée en premier (la Date de Référence unique), puis celle utilisée régulièrement ensuite (aa Date de Multi-Référence). Dans la formule, c'est la Date de Multi-Référence qui est utilisée.</p>"
+single_refdate			= "Date de Référence unique"
+two_step_note			= "<p>Note Importante : 
+			<br />Pour utiliser une procédure DEUX ETAPES, ContactMaster évalue d'abord la Date d'Envoi pour la Date de Multi-Référence. Si elle peut être calculée (tous les champs nécessaires existent) et que le message peut être programmé (le résultat est dans le futur), alors cela devient la Date d'Envoi. Dans le cas contraire, ContactMaster évalue la Date d'Envoi pour la Date de Référence unique. Si la Date d'Envoi peut être calculée et le message Programmé, ContactMaster le fait. Sinon, la procédure est considérée non Valide pour le Client.</p>"
+pls_select_multi_refdate	= "Merci de choisir une Date de Multi-Référence."
+pls_select_single_refdate	= "Merci de choisir une Date de Référence unique."
+
+[PROC_UNLESS]
+; template
+proc_unless_instructions	= "<p>Date d'envoi correctement calculée! Vous devez maintenant choisir le Critère 'SAUF SI' B.</p>
+			<p>La procédure enverra son Message SI Critère A est vrai, SAUF SI Critère B est vrai.</p>
+			<p>Par défaut, le Critère B est faux, et vous pouvez le laisser comme tel.
+			<br />Ou - vous pouvez définir pour le Critère B une suite de comparaisons de dates, une seule d'entre elle étant vrai suffisant à rendre le Critère B vrai, et à empêcher la procédure d'envoyer le Message. Par exemple :</p>
+			<p>SAUF SI [(Date d'Envoi - Date de Naissance) &lt; 10 years] arrêtera la procédure jusqu'à ce que l'animal ait 10 ans.
+			<br />SAUF SI [(Date d'Envoi - Date de Naissance) &lt; 10 years] OR [(Date d'Envoi - Date Dernière Visite) &lt; 3 months)] désactivera le message si l'animal a moins de 10 ans, ou si l'animal a eu une visite durant les trois mois précédents.</p>
+			<p>Chaque critère est de la forme :</p>
+			<p>DateReference1 - DateReference2 &lt;/&lt;=/=/&gt;=/&gt;  durée
+			<br />où les Dates de Références peuvent être toute date issue du Dossier Client</p>
+			<p>Vous pouvez ajouter autant de critères que vous souhaitez dans le Critère B.</p>"
+
+[SPECIES]
+; controller
+specie_saved_ok			= "Espèce correctement enregistrée."
+specie_saved_updated		= "Espèce correctement mise à jour."
+specie_duplicate_error		= "Tentative de duplication : Espèce existante"
+
+; template helper
+no_breed			= "-- pas de race --"
+
+; template
+click_new_specie		= "Cliquer ici pour créer une nouvelle espèce"
+add_a_breed			= "Ajouter une race"
+add_specie			= "Ajouter une espèce"
+update_specie			= "Mettre à jour une espèce"
+breeds				= Races
+
+; javascript
+change_to			= "changer en"
+hide_new_specie_form		= "Masquer le formulaire de nouvelle espèce"
+pls_enter_specie		= "Merci de spécifier une espèce."
+specie_deletion_ok		= "Espèce correctement supprimée."
+specie_deletion_error		= "Une erreur est survenue pendant la suppression de l'espèce."
+
+[TESTUPLOADINI]
+; controller
+upload_file_error		= "Erreur de chargement du fichier, veuillez réessayer!"
+db_ini_update_ok		= "Base de données correctement mise à jour avec le fichier INI"
+db_ini_update_error		= "Fichier INI transféré.  Erreur lors de l'insertion des données.  Merci de vérifier les erreurs dans le fichier INI."
+
+; template
+ini_file_upload			= "Charger un fichier INI"
+choose_ini_file			= "Choisir un fichier INI"
+upload_client_file		= "Télécharger un fichier Client"
+upload_results			= "Résultats de téléchargement"
+
+; javascript
+pls_choose_ini_to_upload	= "Merci de spécifier un fichier INI à transférer."
+
+; end of file

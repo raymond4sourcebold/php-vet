@@ -1,0 +1,62 @@
+<?php
+/**
+ * th_ponestep.php
+ * This file is included inside of /system/template.php on function show().
+ * Variables here are accessible on the template file with the same names.
+ *
+ * LICENSE: All rights reserved.
+ *
+ * @copyright  Copyright (c) 2008, ContactMaster, Inc.
+ * @license    Proprietary Software
+ * @version    2.0.1
+ * @link       http://dev.contactmaster.biz
+ * @since      File available since Release 2.0.1
+ * @package    proc_one_step
+ * @subpackage template_helper
+ */
+
+$aDateCri	= array();
+foreach ($aDateCriteria as $value) {
+	$aDateCri[$value["criteriaCaptionId"]]	= $value['localCaption'] ? $value['localCaption'] : $value['criteriaCode'];
+}
+$selRefDate	= $this->arrayToChoice('selReferenceDateId', $aDateCri, 'select', lang_dropdown_pick_refdate, ($selReferenceDateId ? $selReferenceDateId : NULL));
+
+//~ $div_select_refdate	= "<div style='display: inline;'>$selRefDate</div>";
+
+
+$aOffsetCri	= array();
+foreach ($aOffset as $key => $value) {
+	$aOffsetCri[$key]	= $value;
+}
+
+$selOffset	= $this->arrayToChoice('selOffset', $aOffsetCri, 'select', NULL, ($selOffset ? $selOffset : '1:y'));
+
+//~ $div_select_offset	= "<div style='display: inline;'>$selOffset</div>";
+
+
+$aAnticipationCri	= array();
+foreach ($aAnticipation as $key => $value) {
+	$aAnticipationCri[$key]	= $value;
+}
+$selAnticipation	= $this->arrayToChoice('selAnticipation', $aAnticipationCri, 'select', NULL, ($selAnticipation ? $selAnticipation : '1:m'));
+
+//~ $div_select_anticipation	= "<div style='display: inline;'>$selAnticipation</div>";
+
+
+$yesNo			= array(
+	1	=> lang_word_yes, 
+	0	=> lang_word_no
+);
+$radRecurringYesno	= $this->arrayToChoice('radRecurring', $yesNo, 'radio', NULL, ($radRecurring ? $radRecurring : 0));
+
+$aRecurCri		= array();
+foreach ($aRecur as $key => $value) {
+	$aRecurCri[$key]	= $value;
+}
+$selRecurPeriod		= $this->arrayToChoice('selRecur', $aRecurCri, 'select', NULL, ($selRecur ? $selRecur : '1:y'));
+
+$aJsReplace	= array(
+	'isRecurring'	=> "\n" . 'var isRecurring = ' . ($selRecur ? 'true' : 'false') . ';' . "\n"
+);
+
+// eof

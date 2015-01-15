@@ -1,0 +1,541 @@
+-- phpMyAdmin SQL Dump
+-- version 2.7.0-pl2
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Aug 28, 2008 at 11:51 PM
+-- Server version: 5.0.22
+-- PHP Version: 5.2.1
+-- 
+-- Database: `cm2`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `animal`
+-- 
+
+CREATE TABLE `animal` (
+  `animalId` int(10) NOT NULL auto_increment,
+  `animalExternalId` varchar(50) default NULL,
+  `specieId` int(10) default NULL,
+  `raceId` int(10) NOT NULL,
+  `clientId` int(10) default NULL,
+  `genderId` int(2) NOT NULL,
+  `animalName` varchar(25) NOT NULL,
+  `identified` tinyint(1) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `vaccinated` tinyint(1) NOT NULL,
+  `birthDate` datetime NOT NULL,
+  `deathDate` datetime NOT NULL,
+  `avePurchase` decimal(8,2) NOT NULL,
+  `aveVisitPerYear` int(3) NOT NULL,
+  PRIMARY KEY  (`animalId`),
+  KEY `specieId` (`specieId`),
+  KEY `clientId` (`clientId`),
+  KEY `raceId` (`raceId`),
+  KEY `genderId` (`genderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `animalEventLog`
+-- 
+
+CREATE TABLE `animalEventLog` (
+  `aelId` int(10) NOT NULL auto_increment,
+  `aelDate` datetime NOT NULL,
+  `animalEventId` int(10) default NULL,
+  `animalId` int(10) default NULL,
+  PRIMARY KEY  (`aelId`),
+  KEY `animalEventId` (`animalEventId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `animalEventType`
+-- 
+
+CREATE TABLE `animalEventType` (
+  `animalEventId` int(10) NOT NULL auto_increment,
+  `animalEventName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`animalEventId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `category`
+-- 
+
+CREATE TABLE `category` (
+  `categoryId` int(10) NOT NULL auto_increment,
+  `subscriberId` int(10) NOT NULL,
+  `messageCategoryName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`categoryId`),
+  KEY `subscriberId` (`subscriberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `channelType`
+-- 
+
+CREATE TABLE `channelType` (
+  `channelId` int(10) NOT NULL auto_increment,
+  `channelName` varchar(25) NOT NULL,
+  PRIMARY KEY  (`channelId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `client`
+-- 
+
+CREATE TABLE `client` (
+  `clientId` int(10) NOT NULL auto_increment,
+  `clientExternalId` varchar(50) default NULL,
+  `preferredChannelId` int(10) default NULL,
+  `backupChannelId` int(10) default NULL,
+  `nixedChannelId` int(10) default NULL,
+  `honorary` varchar(5) NOT NULL,
+  `lastName` varchar(25) NOT NULL,
+  `firstName` varchar(25) NOT NULL,
+  `noMessage` tinyint(1) NOT NULL,
+  `email` varchar(75) NOT NULL,
+  `homeAddress1` varchar(100) NOT NULL,
+  `homeAddress2` varchar(100) NOT NULL,
+  `homeCity` varchar(25) NOT NULL,
+  `homePostalCode` varchar(10) NOT NULL,
+  `homeProvinceOrState` varchar(25) NOT NULL,
+  `officeAddress1` varchar(100) NOT NULL,
+  `officeAddress2` varchar(100) NOT NULL,
+  `officeCity` varchar(25) NOT NULL,
+  `officePostalCode` varchar(10) NOT NULL,
+  `officeProvinceOrState` varchar(25) NOT NULL,
+  `country` varchar(25) NOT NULL,
+  `messageMinPriority` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`clientId`),
+  KEY `preferredChannelId` (`preferredChannelId`),
+  KEY `backupChannelId` (`backupChannelId`),
+  KEY `nixedChannelId` (`nixedChannelId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `clientPhone`
+-- 
+
+CREATE TABLE `clientPhone` (
+  `clientPhoneId` int(10) NOT NULL auto_increment,
+  `clientId` int(10) default NULL,
+  `priority` tinyint(4) NOT NULL,
+  `phoneType` enum('cell','home','office') NOT NULL,
+  `phoneNumber` varchar(15) NOT NULL,
+  PRIMARY KEY  (`clientPhoneId`),
+  KEY `clientId` (`clientId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `commPlan`
+-- 
+
+CREATE TABLE `commPlan` (
+  `subscriberId` int(10) NOT NULL,
+  `sendingWeekdays` varchar(7) NOT NULL,
+  `sendingHoursCsv` varchar(5) NOT NULL,
+  `thisPriorityOrLess` tinyint(1) NOT NULL,
+  `clientQuotaCsv` varchar(15) NOT NULL,
+  PRIMARY KEY  (`subscriberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `criteriaBoolean`
+-- 
+
+CREATE TABLE `criteriaBoolean` (
+  `criteriaBooleanId` int(10) NOT NULL auto_increment,
+  `animalId` int(10) NOT NULL,
+  `criteriaCaptionId` int(10) NOT NULL,
+  `criteriaBooleanValue` int(10) NOT NULL,
+  PRIMARY KEY  (`criteriaBooleanId`),
+  KEY `animalId` (`animalId`),
+  KEY `criteriaCaptionId` (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `criteriaCaption`
+-- 
+
+CREATE TABLE `criteriaCaption` (
+  `criteriaCaptionId` int(10) NOT NULL auto_increment,
+  `criteriaCaptionValue` varchar(35) NOT NULL,
+  PRIMARY KEY  (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `criteriaDate`
+-- 
+
+CREATE TABLE `criteriaDate` (
+  `criteriaDateId` int(10) NOT NULL auto_increment,
+  `animalId` int(10) NOT NULL,
+  `criteriaCaptionId` int(10) NOT NULL,
+  `criteriaDateValue` int(10) NOT NULL,
+  `isTrue` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`criteriaDateId`),
+  KEY `animalId` (`animalId`),
+  KEY `criteriaCaptionId` (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `criteriaQuantity`
+-- 
+
+CREATE TABLE `criteriaQuantity` (
+  `criteriaQuantityId` int(10) NOT NULL auto_increment,
+  `animalId` int(10) NOT NULL,
+  `criteriaCaptionId` int(10) NOT NULL,
+  `criteriaQuantityValue` varchar(10) NOT NULL,
+  PRIMARY KEY  (`criteriaQuantityId`),
+  KEY `animalId` (`animalId`),
+  KEY `criteriaCaptionId` (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `customMessage`
+-- 
+
+CREATE TABLE `customMessage` (
+  `followUpId` int(10) NOT NULL,
+  `customMsgCategoryId` int(10) default NULL,
+  `customMsgTitle` varchar(50) NOT NULL,
+  `customMsgBody` text NOT NULL,
+  `customMsgChannel` enum('SMS','voice','email','snailmail') NOT NULL,
+  KEY `followUpId` (`followUpId`),
+  KEY `customMessage_ibfk_2` (`customMsgCategoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `event`
+-- 
+
+CREATE TABLE `event` (
+  `eventId` int(10) NOT NULL auto_increment,
+  `animalEventId` int(10) default NULL,
+  `eventCategoryId` int(10) default NULL,
+  `isPractice` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`eventId`),
+  KEY `eventCategoryId` (`eventCategoryId`),
+  KEY `animalEventId` (`animalEventId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `followUp`
+-- 
+
+CREATE TABLE `followUp` (
+  `followUpId` int(10) NOT NULL auto_increment,
+  `procedureId` int(10) NOT NULL,
+  `animalId` int(10) NOT NULL,
+  `clientId` int(10) NOT NULL,
+  `subscriberId` int(10) NOT NULL,
+  `messageId` int(10) NOT NULL,
+  `consolidate` int(10) NOT NULL,
+  `sendOnDeath` tinyint(1) NOT NULL,
+  `priority` tinyint(1) NOT NULL,
+  `sendDate` datetime NOT NULL,
+  `isReminder` tinyint(1) NOT NULL,
+  `isCustomMessage` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`followUpId`),
+  KEY `procedureId` (`procedureId`),
+  KEY `animalId` (`animalId`),
+  KEY `clientId` (`clientId`),
+  KEY `subscriberId` (`subscriberId`),
+  KEY `messageId` (`messageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `gender`
+-- 
+
+CREATE TABLE `gender` (
+  `genderId` int(2) NOT NULL auto_increment,
+  `genderName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`genderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `message`
+-- 
+
+CREATE TABLE `message` (
+  `messageId` int(10) NOT NULL auto_increment,
+  `messageCategoryId` int(10) default NULL,
+  `messageTitle` varchar(50) NOT NULL,
+  `messageBody` text NOT NULL,
+  `isPractice` tinyint(1) NOT NULL,
+  `messageChannel` enum('SMS','voice','email','snailmail') NOT NULL,
+  PRIMARY KEY  (`messageId`),
+  KEY `messageCategoryId` (`messageCategoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `messageQueueLog`
+-- 
+
+CREATE TABLE `messageQueueLog` (
+  `mqlId` int(10) NOT NULL auto_increment,
+  `messageStatusId` int(10) default NULL,
+  `sendUnixtime` varchar(10) NOT NULL,
+  `channel` varchar(25) NOT NULL,
+  `recipientContactInfo` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `subscriberId` int(10) NOT NULL,
+  `clientId` int(10) NOT NULL,
+  `animalId` int(10) NOT NULL,
+  PRIMARY KEY  (`mqlId`),
+  KEY `messageQueueLog_ibfk_1` (`messageStatusId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `messageStatusType`
+-- 
+
+CREATE TABLE `messageStatusType` (
+  `messageStatusId` int(10) NOT NULL auto_increment,
+  `messageStatus` varchar(25) NOT NULL,
+  PRIMARY KEY  (`messageStatusId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `messageVariable`
+-- 
+
+CREATE TABLE `messageVariable` (
+  `msgVarId` int(10) NOT NULL auto_increment,
+  `msgVarTable` varchar(25) NOT NULL,
+  `msgVarColumn` varchar(35) NOT NULL,
+  PRIMARY KEY  (`msgVarId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `procedure`
+-- 
+
+CREATE TABLE `procedure` (
+  `procedureId` int(10) NOT NULL auto_increment,
+  `messageId` int(10) default NULL,
+  `subscriberId` int(10) NOT NULL,
+  `procCategoryId` int(10) default NULL,
+  `procSteps` enum('one','two','recur') NOT NULL,
+  `procName` varchar(50) NOT NULL,
+  `priority` tinyint(1) NOT NULL,
+  `isGroupProc` tinyint(1) NOT NULL,
+  `isPractice` tinyint(1) NOT NULL,
+  `isActive` tinyint(1) NOT NULL,
+  `consolidate` tinyint(1) NOT NULL,
+  `sendOnDeath` tinyint(1) NOT NULL,
+  `refDateId` int(10) NOT NULL,
+  `offset` int(4) NOT NULL,
+  `anticipation` int(4) NOT NULL,
+  `singleRefDateId` int(10) NOT NULL,
+  `singleRefDateUsed` tinyint(1) NOT NULL,
+  `specieIdGenderCsvc` varchar(75) NOT NULL,
+  `criteriaBooleanIdCsvc` varchar(75) NOT NULL,
+  `unlessCriteriaDateIdCsvc` varchar(75) NOT NULL,
+  `criteriaQuantityIdCsvc` varchar(75) NOT NULL,
+  `groupSendDate` datetime NOT NULL,
+  `recurringPeriod` enum('1w','2w','3w','1m','2m','3m','6m','1y') NOT NULL,
+  `reminderCount` tinyint(1) NOT NULL,
+  `reminderMessageId1` int(10) NOT NULL,
+  `reminderMessageId2` int(10) NOT NULL,
+  `reminderCriteriaDateId` int(10) NOT NULL,
+  `reminderAfterNdays1` int(5) NOT NULL,
+  `reminderAfterNdays2` int(5) NOT NULL,
+  PRIMARY KEY  (`procedureId`),
+  KEY `messageId` (`messageId`),
+  KEY `subscriberId` (`subscriberId`),
+  KEY `procedure_ibfk_3` (`procCategoryId`),
+  KEY `procedure_ibfk_9` (`reminderCriteriaDateId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `race`
+-- 
+
+CREATE TABLE `race` (
+  `raceId` int(10) NOT NULL auto_increment,
+  `specieId` int(10) NOT NULL,
+  `raceName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`raceId`),
+  KEY `specieId` (`specieId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `specie`
+-- 
+
+CREATE TABLE `specie` (
+  `specieId` int(10) NOT NULL auto_increment,
+  `specieName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`specieId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `subscriber`
+-- 
+
+CREATE TABLE `subscriber` (
+  `subscriberId` int(10) NOT NULL auto_increment,
+  `subscriberLogin` varchar(25) NOT NULL,
+  `subscriberPassword` varchar(50) NOT NULL,
+  `subscriberLanguage` varchar(2) NOT NULL,
+  `subscriberProfession` varchar(25) NOT NULL,
+  `subscriberEmail` varchar(75) NOT NULL,
+  PRIMARY KEY  (`subscriberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Constraints for dumped tables
+-- 
+
+-- 
+-- Constraints for table `animal`
+-- 
+ALTER TABLE `animal`
+  ADD CONSTRAINT `animal_ibfk_1` FOREIGN KEY (`genderId`) REFERENCES `gender` (`genderId`),
+  ADD CONSTRAINT `animal_ibfk_2` FOREIGN KEY (`specieId`) REFERENCES `specie` (`specieId`),
+  ADD CONSTRAINT `animal_ibfk_3` FOREIGN KEY (`clientId`) REFERENCES `client` (`clientId`),
+  ADD CONSTRAINT `animal_ibfk_4` FOREIGN KEY (`raceId`) REFERENCES `race` (`raceId`);
+
+-- 
+-- Constraints for table `category`
+-- 
+ALTER TABLE `category`
+  ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`subscriberId`) REFERENCES `subscriber` (`subscriberId`);
+
+-- 
+-- Constraints for table `client`
+-- 
+ALTER TABLE `client`
+  ADD CONSTRAINT `client_ibfk_1` FOREIGN KEY (`preferredChannelId`) REFERENCES `channelType` (`channelId`),
+  ADD CONSTRAINT `client_ibfk_2` FOREIGN KEY (`backupChannelId`) REFERENCES `channelType` (`channelId`),
+  ADD CONSTRAINT `client_ibfk_3` FOREIGN KEY (`nixedChannelId`) REFERENCES `channelType` (`channelId`);
+
+-- 
+-- Constraints for table `clientPhone`
+-- 
+ALTER TABLE `clientPhone`
+  ADD CONSTRAINT `clientPhone_ibfk_1` FOREIGN KEY (`clientId`) REFERENCES `client` (`clientId`);
+
+-- 
+-- Constraints for table `commPlan`
+-- 
+ALTER TABLE `commPlan`
+  ADD CONSTRAINT `commPlan_ibfk_1` FOREIGN KEY (`subscriberId`) REFERENCES `subscriber` (`subscriberId`);
+
+-- 
+-- Constraints for table `criteriaBoolean`
+-- 
+ALTER TABLE `criteriaBoolean`
+  ADD CONSTRAINT `criteriaBoolean_ibfk_1` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`),
+  ADD CONSTRAINT `criteriaBoolean_ibfk_2` FOREIGN KEY (`criteriaCaptionId`) REFERENCES `criteriaCaption` (`criteriaCaptionId`);
+
+-- 
+-- Constraints for table `criteriaDate`
+-- 
+ALTER TABLE `criteriaDate`
+  ADD CONSTRAINT `criteriaDate_ibfk_1` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`),
+  ADD CONSTRAINT `criteriaDate_ibfk_2` FOREIGN KEY (`criteriaCaptionId`) REFERENCES `criteriaCaption` (`criteriaCaptionId`);
+
+-- 
+-- Constraints for table `criteriaQuantity`
+-- 
+ALTER TABLE `criteriaQuantity`
+  ADD CONSTRAINT `criteriaQuantity_ibfk_1` FOREIGN KEY (`criteriaCaptionId`) REFERENCES `criteriaCaption` (`criteriaCaptionId`),
+  ADD CONSTRAINT `criteriaQuantity_ibfk_2` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`);
+
+-- 
+-- Constraints for table `customMessage`
+-- 
+ALTER TABLE `customMessage`
+  ADD CONSTRAINT `customMessage_ibfk_1` FOREIGN KEY (`followUpId`) REFERENCES `followUp` (`followUpId`),
+  ADD CONSTRAINT `customMessage_ibfk_2` FOREIGN KEY (`customMsgCategoryId`) REFERENCES `category` (`categoryId`);
+
+-- 
+-- Constraints for table `event`
+-- 
+ALTER TABLE `event`
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`animalEventId`) REFERENCES `animalEventType` (`animalEventId`),
+  ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`eventCategoryId`) REFERENCES `category` (`categoryId`);
+
+-- 
+-- Constraints for table `followUp`
+-- 
+ALTER TABLE `followUp`
+  ADD CONSTRAINT `followUp_ibfk_1` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`),
+  ADD CONSTRAINT `followUp_ibfk_2` FOREIGN KEY (`clientId`) REFERENCES `client` (`clientId`),
+  ADD CONSTRAINT `followUp_ibfk_3` FOREIGN KEY (`subscriberId`) REFERENCES `commPlan` (`subscriberId`),
+  ADD CONSTRAINT `followUp_ibfk_4` FOREIGN KEY (`messageId`) REFERENCES `message` (`messageId`);
+
+-- 
+-- Constraints for table `message`
+-- 
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`messageCategoryId`) REFERENCES `category` (`categoryId`);
+
+-- 
+-- Constraints for table `procedure`
+-- 
+ALTER TABLE `procedure`
+  ADD CONSTRAINT `procedure_ibfk_1` FOREIGN KEY (`messageId`) REFERENCES `message` (`messageId`),
+  ADD CONSTRAINT `procedure_ibfk_2` FOREIGN KEY (`subscriberId`) REFERENCES `subscriber` (`subscriberId`),
+  ADD CONSTRAINT `procedure_ibfk_3` FOREIGN KEY (`procCategoryId`) REFERENCES `category` (`categoryId`),
+  ADD CONSTRAINT `procedure_ibfk_9` FOREIGN KEY (`reminderCriteriaDateId`) REFERENCES `criteriaDate` (`criteriaDateId`);
+
+-- 
+-- Constraints for table `race`
+-- 
+ALTER TABLE `race`
+  ADD CONSTRAINT `race_ibfk_1` FOREIGN KEY (`specieId`) REFERENCES `specie` (`specieId`);

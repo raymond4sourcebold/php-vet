@@ -1,0 +1,44 @@
+/**
+ * pifcrita.css
+ */
+
+/*
+.procmenuleft {
+	background: url(/images/procmenu-left.gif) no-repeat; 
+	background-position: center left;
+	height: 31px;
+}
+
+.procmenuright {
+	background: url(/images/procmenu-right.gif) no-repeat;
+	background-position: center right;
+	height: 31px;
+}
+*/
+.procmenu ul {
+	/*padding-left: 14px;*/
+}
+
+/*
+.procmenu a {
+	display: block;
+	padding: 0 10px;
+	text-decoration: none;
+	color: #333333;
+}
+.procmenu a:link {
+	text-decoration: none
+}
+.procmenu a:visited {
+	text-decoration: none;
+	background-color: #FFFFCC;
+}
+.procmenu a:active {
+	text-decoration: none;
+	background-color: #CCCCCC;
+}
+.procmenu a:hover {
+	font-weight:bold; 
+	background-color: #EEEEEE;
+}
+*/

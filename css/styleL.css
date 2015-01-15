@@ -1,0 +1,75 @@
+@charset "UTF-8";
+/* FEUILLE de style de lecran de connexion */
+
+body {
+	background-color:#DDDDDD;
+	width: 800px;
+	margin:auto;
+}
+
+#logo {
+	background-image:url(/images/logo.png);
+	background-repeat:no-repeat;
+	width: 395px;
+	height: 76px;
+	margin-top:30px;
+}
+
+#blocconnexion {
+	margin-top: 150px;
+}
+
+#boiteconnexion{
+	/* by Raymond */
+	width: 255px;
+	margin: 0 auto;
+}
+
+#blochaut {
+	background-image:url(/images/login1.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	height: 18px;
+}
+
+#bloccentre {
+	background-image:url(/images/login2.png);
+	background-repeat:repeat-y;
+	background-position:center;
+	text-align: right;
+	height: 100%;
+	/*width: 300px;*/
+	margin: 0 auto;
+}
+
+#blocbas {
+	background-image:url(/images/login3.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	height: 18px;
+}
+
+#erreurauth {
+	font-weight:bold;
+	color:#FF0000;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+/* by Raymond */
+label {
+	text-align: right;
+	padding-right: 5px;
+	display: block;
+	width: 70px;
+	float: left;
+}
+
+.txtIn input {
+	display: block;
+	float: left;
+}
+
+br {
+	clear: left;
+}

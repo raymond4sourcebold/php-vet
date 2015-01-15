@@ -1,0 +1,747 @@
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: cm2
+-- ------------------------------------------------------
+-- Server version	5.0.51a-3ubuntu5.7-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `animal`
+--
+
+DROP TABLE IF EXISTS `animal`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `animal` (
+  `animalId` int(10) NOT NULL auto_increment,
+  `animalExternalId` varchar(50) default NULL,
+  `specieId` int(10) default NULL,
+  `raceId` int(10) NOT NULL,
+  `clientId` int(10) default NULL,
+  `genderId` int(2) NOT NULL,
+  `animalName` varchar(25) NOT NULL,
+  `identified` tinyint(1) NOT NULL,
+  `active` tinyint(1) NOT NULL,
+  `vaccinated` tinyint(1) NOT NULL,
+  `birthDate` datetime NOT NULL,
+  `deathDate` datetime NOT NULL,
+  `avePurchase` decimal(8,2) NOT NULL,
+  `aveVisitPerYear` int(3) NOT NULL,
+  PRIMARY KEY  (`animalId`),
+  KEY `specieId` (`specieId`),
+  KEY `clientId` (`clientId`),
+  KEY `raceId` (`raceId`),
+  KEY `genderId` (`genderId`),
+  CONSTRAINT `animal_ibfk_1` FOREIGN KEY (`genderId`) REFERENCES `gender` (`genderId`),
+  CONSTRAINT `animal_ibfk_2` FOREIGN KEY (`specieId`) REFERENCES `specie` (`specieId`),
+  CONSTRAINT `animal_ibfk_3` FOREIGN KEY (`clientId`) REFERENCES `client` (`clientId`),
+  CONSTRAINT `animal_ibfk_4` FOREIGN KEY (`raceId`) REFERENCES `race` (`raceId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `animal`
+--
+
+LOCK TABLES `animal` WRITE;
+/*!40000 ALTER TABLE `animal` DISABLE KEYS */;
+/*!40000 ALTER TABLE `animal` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `animalEventLog`
+--
+
+DROP TABLE IF EXISTS `animalEventLog`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `animalEventLog` (
+  `aelId` int(10) NOT NULL auto_increment,
+  `aelDate` datetime NOT NULL,
+  `animalEventId` int(10) default NULL,
+  `animalId` int(10) default NULL,
+  PRIMARY KEY  (`aelId`),
+  KEY `animalEventId` (`animalEventId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `animalEventLog`
+--
+
+LOCK TABLES `animalEventLog` WRITE;
+/*!40000 ALTER TABLE `animalEventLog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `animalEventLog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `animalEventType`
+--
+
+DROP TABLE IF EXISTS `animalEventType`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `animalEventType` (
+  `animalEventId` int(10) NOT NULL auto_increment,
+  `animalEventName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`animalEventId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `animalEventType`
+--
+
+LOCK TABLES `animalEventType` WRITE;
+/*!40000 ALTER TABLE `animalEventType` DISABLE KEYS */;
+/*!40000 ALTER TABLE `animalEventType` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category`
+--
+
+DROP TABLE IF EXISTS `category`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `category` (
+  `categoryId` int(10) NOT NULL auto_increment,
+  `subscriberId` int(10) NOT NULL,
+  `messageCategoryName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`categoryId`),
+  KEY `subscriberId` (`subscriberId`),
+  CONSTRAINT `category_ibfk_1` FOREIGN KEY (`subscriberId`) REFERENCES `subscriber` (`subscriberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `category`
+--
+
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `channelType`
+--
+
+DROP TABLE IF EXISTS `channelType`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `channelType` (
+  `channelId` int(10) NOT NULL auto_increment,
+  `channelName` varchar(25) NOT NULL,
+  PRIMARY KEY  (`channelId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `channelType`
+--
+
+LOCK TABLES `channelType` WRITE;
+/*!40000 ALTER TABLE `channelType` DISABLE KEYS */;
+/*!40000 ALTER TABLE `channelType` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `client`
+--
+
+DROP TABLE IF EXISTS `client`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `client` (
+  `clientId` int(10) NOT NULL auto_increment,
+  `clientExternalId` varchar(50) default NULL,
+  `preferredChannelId` int(10) default NULL,
+  `backupChannelId` int(10) default NULL,
+  `nixedChannelId` int(10) default NULL,
+  `honorary` varchar(5) NOT NULL,
+  `lastName` varchar(25) NOT NULL,
+  `firstName` varchar(25) NOT NULL,
+  `noMessage` tinyint(1) NOT NULL,
+  `email` varchar(75) NOT NULL,
+  `homeAddress1` varchar(100) NOT NULL,
+  `homeAddress2` varchar(100) NOT NULL,
+  `homeCity` varchar(25) NOT NULL,
+  `homePostalCode` varchar(10) NOT NULL,
+  `homeProvinceOrState` varchar(25) NOT NULL,
+  `officeAddress1` varchar(100) NOT NULL,
+  `officeAddress2` varchar(100) NOT NULL,
+  `officeCity` varchar(25) NOT NULL,
+  `officePostalCode` varchar(10) NOT NULL,
+  `officeProvinceOrState` varchar(25) NOT NULL,
+  `country` varchar(25) NOT NULL,
+  `messageMinPriority` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`clientId`),
+  KEY `preferredChannelId` (`preferredChannelId`),
+  KEY `backupChannelId` (`backupChannelId`),
+  KEY `nixedChannelId` (`nixedChannelId`),
+  CONSTRAINT `client_ibfk_1` FOREIGN KEY (`preferredChannelId`) REFERENCES `channelType` (`channelId`),
+  CONSTRAINT `client_ibfk_2` FOREIGN KEY (`backupChannelId`) REFERENCES `channelType` (`channelId`),
+  CONSTRAINT `client_ibfk_3` FOREIGN KEY (`nixedChannelId`) REFERENCES `channelType` (`channelId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `client`
+--
+
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `clientPhone`
+--
+
+DROP TABLE IF EXISTS `clientPhone`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `clientPhone` (
+  `clientPhoneId` int(10) NOT NULL auto_increment,
+  `clientId` int(10) default NULL,
+  `priority` tinyint(4) NOT NULL,
+  `phoneType` enum('cell','home','office') NOT NULL,
+  `phoneNumber` varchar(15) NOT NULL,
+  PRIMARY KEY  (`clientPhoneId`),
+  KEY `clientId` (`clientId`),
+  CONSTRAINT `clientPhone_ibfk_1` FOREIGN KEY (`clientId`) REFERENCES `client` (`clientId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `clientPhone`
+--
+
+LOCK TABLES `clientPhone` WRITE;
+/*!40000 ALTER TABLE `clientPhone` DISABLE KEYS */;
+/*!40000 ALTER TABLE `clientPhone` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `commPlan`
+--
+
+DROP TABLE IF EXISTS `commPlan`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `commPlan` (
+  `subscriberId` int(10) NOT NULL,
+  `sendingWeekdays` varchar(7) NOT NULL,
+  `sendingHoursCsv` varchar(5) NOT NULL,
+  `thisPriorityOrLess` tinyint(1) NOT NULL,
+  `clientQuotaCsv` varchar(15) NOT NULL,
+  PRIMARY KEY  (`subscriberId`),
+  CONSTRAINT `commPlan_ibfk_1` FOREIGN KEY (`subscriberId`) REFERENCES `subscriber` (`subscriberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `commPlan`
+--
+
+LOCK TABLES `commPlan` WRITE;
+/*!40000 ALTER TABLE `commPlan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `commPlan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `criteriaBoolean`
+--
+
+DROP TABLE IF EXISTS `criteriaBoolean`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `criteriaBoolean` (
+  `criteriaBooleanId` int(10) NOT NULL auto_increment,
+  `animalId` int(10) NOT NULL,
+  `criteriaCaptionId` int(10) NOT NULL,
+  `criteriaBooleanValue` int(10) NOT NULL,
+  PRIMARY KEY  (`criteriaBooleanId`),
+  KEY `animalId` (`animalId`),
+  KEY `criteriaCaptionId` (`criteriaCaptionId`),
+  CONSTRAINT `criteriaBoolean_ibfk_1` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`),
+  CONSTRAINT `criteriaBoolean_ibfk_2` FOREIGN KEY (`criteriaCaptionId`) REFERENCES `criteriaCaption` (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `criteriaBoolean`
+--
+
+LOCK TABLES `criteriaBoolean` WRITE;
+/*!40000 ALTER TABLE `criteriaBoolean` DISABLE KEYS */;
+/*!40000 ALTER TABLE `criteriaBoolean` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `criteriaCaption`
+--
+
+DROP TABLE IF EXISTS `criteriaCaption`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `criteriaCaption` (
+  `criteriaCaptionId` int(10) NOT NULL auto_increment,
+  `criteriaCaptionValue` varchar(35) NOT NULL,
+  PRIMARY KEY  (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `criteriaCaption`
+--
+
+LOCK TABLES `criteriaCaption` WRITE;
+/*!40000 ALTER TABLE `criteriaCaption` DISABLE KEYS */;
+/*!40000 ALTER TABLE `criteriaCaption` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `criteriaDate`
+--
+
+DROP TABLE IF EXISTS `criteriaDate`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `criteriaDate` (
+  `criteriaDateId` int(10) NOT NULL auto_increment,
+  `animalId` int(10) NOT NULL,
+  `criteriaCaptionId` int(10) NOT NULL,
+  `criteriaDateValue` int(10) NOT NULL,
+  `isTrue` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`criteriaDateId`),
+  KEY `animalId` (`animalId`),
+  KEY `criteriaCaptionId` (`criteriaCaptionId`),
+  CONSTRAINT `criteriaDate_ibfk_1` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`),
+  CONSTRAINT `criteriaDate_ibfk_2` FOREIGN KEY (`criteriaCaptionId`) REFERENCES `criteriaCaption` (`criteriaCaptionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `criteriaDate`
+--
+
+LOCK TABLES `criteriaDate` WRITE;
+/*!40000 ALTER TABLE `criteriaDate` DISABLE KEYS */;
+/*!40000 ALTER TABLE `criteriaDate` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `criteriaQuantity`
+--
+
+DROP TABLE IF EXISTS `criteriaQuantity`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `criteriaQuantity` (
+  `criteriaQuantityId` int(10) NOT NULL auto_increment,
+  `animalId` int(10) NOT NULL,
+  `criteriaCaptionId` int(10) NOT NULL,
+  `criteriaQuantityValue` varchar(10) NOT NULL,
+  PRIMARY KEY  (`criteriaQuantityId`),
+  KEY `animalId` (`animalId`),
+  KEY `criteriaCaptionId` (`criteriaCaptionId`),
+  CONSTRAINT `criteriaQuantity_ibfk_1` FOREIGN KEY (`criteriaCaptionId`) REFERENCES `criteriaCaption` (`criteriaCaptionId`),
+  CONSTRAINT `criteriaQuantity_ibfk_2` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `criteriaQuantity`
+--
+
+LOCK TABLES `criteriaQuantity` WRITE;
+/*!40000 ALTER TABLE `criteriaQuantity` DISABLE KEYS */;
+/*!40000 ALTER TABLE `criteriaQuantity` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customMessage`
+--
+
+DROP TABLE IF EXISTS `customMessage`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `customMessage` (
+  `followUpId` int(10) NOT NULL,
+  `customMsgCategoryId` int(10) default NULL,
+  `customMsgTitle` varchar(50) NOT NULL,
+  `customMsgBody` text NOT NULL,
+  `customMsgChannel` enum('SMS','voice','email','snailmail') NOT NULL,
+  KEY `followUpId` (`followUpId`),
+  KEY `customMessage_ibfk_2` (`customMsgCategoryId`),
+  CONSTRAINT `customMessage_ibfk_1` FOREIGN KEY (`followUpId`) REFERENCES `followUp` (`followUpId`),
+  CONSTRAINT `customMessage_ibfk_2` FOREIGN KEY (`customMsgCategoryId`) REFERENCES `category` (`categoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `customMessage`
+--
+
+LOCK TABLES `customMessage` WRITE;
+/*!40000 ALTER TABLE `customMessage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customMessage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event`
+--
+
+DROP TABLE IF EXISTS `event`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `event` (
+  `eventId` int(10) NOT NULL auto_increment,
+  `animalEventId` int(10) default NULL,
+  `eventCategoryId` int(10) default NULL,
+  `isPractice` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`eventId`),
+  KEY `eventCategoryId` (`eventCategoryId`),
+  KEY `animalEventId` (`animalEventId`),
+  CONSTRAINT `event_ibfk_1` FOREIGN KEY (`animalEventId`) REFERENCES `animalEventType` (`animalEventId`),
+  CONSTRAINT `event_ibfk_2` FOREIGN KEY (`eventCategoryId`) REFERENCES `category` (`categoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `event`
+--
+
+LOCK TABLES `event` WRITE;
+/*!40000 ALTER TABLE `event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `followUp`
+--
+
+DROP TABLE IF EXISTS `followUp`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `followUp` (
+  `followUpId` int(10) NOT NULL auto_increment,
+  `procedureId` int(10) NOT NULL,
+  `animalId` int(10) NOT NULL,
+  `clientId` int(10) NOT NULL,
+  `subscriberId` int(10) NOT NULL,
+  `messageId` int(10) NOT NULL,
+  `consolidate` int(10) NOT NULL,
+  `sendOnDeath` tinyint(1) NOT NULL,
+  `priority` tinyint(1) NOT NULL,
+  `sendDate` datetime NOT NULL,
+  `isReminder` tinyint(1) NOT NULL,
+  `isCustomMessage` tinyint(1) NOT NULL,
+  PRIMARY KEY  (`followUpId`),
+  KEY `procedureId` (`procedureId`),
+  KEY `animalId` (`animalId`),
+  KEY `clientId` (`clientId`),
+  KEY `subscriberId` (`subscriberId`),
+  KEY `messageId` (`messageId`),
+  CONSTRAINT `followUp_ibfk_1` FOREIGN KEY (`animalId`) REFERENCES `animal` (`animalId`),
+  CONSTRAINT `followUp_ibfk_2` FOREIGN KEY (`clientId`) REFERENCES `client` (`clientId`),
+  CONSTRAINT `followUp_ibfk_3` FOREIGN KEY (`subscriberId`) REFERENCES `commPlan` (`subscriberId`),
+  CONSTRAINT `followUp_ibfk_4` FOREIGN KEY (`messageId`) REFERENCES `message` (`messageId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `followUp`
+--
+
+LOCK TABLES `followUp` WRITE;
+/*!40000 ALTER TABLE `followUp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `followUp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gender`
+--
+
+DROP TABLE IF EXISTS `gender`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `gender` (
+  `genderId` int(2) NOT NULL auto_increment,
+  `genderName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`genderId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `gender`
+--
+
+LOCK TABLES `gender` WRITE;
+/*!40000 ALTER TABLE `gender` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gender` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `message`
+--
+
+DROP TABLE IF EXISTS `message`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `message` (
+  `messageId` int(10) NOT NULL auto_increment,
+  `messageCategoryId` int(10) default NULL,
+  `messageTitle` varchar(50) NOT NULL,
+  `messageBody` text NOT NULL,
+  `isPractice` tinyint(1) NOT NULL,
+  `messageChannel` enum('SMS','voice','email','snailmail') NOT NULL,
+  PRIMARY KEY  (`messageId`),
+  KEY `messageCategoryId` (`messageCategoryId`),
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`messageCategoryId`) REFERENCES `category` (`categoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `message`
+--
+
+LOCK TABLES `message` WRITE;
+/*!40000 ALTER TABLE `message` DISABLE KEYS */;
+/*!40000 ALTER TABLE `message` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `messageQueueLog`
+--
+
+DROP TABLE IF EXISTS `messageQueueLog`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `messageQueueLog` (
+  `mqlId` int(10) NOT NULL auto_increment,
+  `messageStatusId` int(10) default NULL,
+  `sendUnixtime` varchar(10) NOT NULL,
+  `channel` varchar(25) NOT NULL,
+  `recipientContactInfo` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `subscriberId` int(10) NOT NULL,
+  `clientId` int(10) NOT NULL,
+  `animalId` int(10) NOT NULL,
+  PRIMARY KEY  (`mqlId`),
+  KEY `messageQueueLog_ibfk_1` (`messageStatusId`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `messageQueueLog`
+--
+
+LOCK TABLES `messageQueueLog` WRITE;
+/*!40000 ALTER TABLE `messageQueueLog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messageQueueLog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `messageStatusType`
+--
+
+DROP TABLE IF EXISTS `messageStatusType`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `messageStatusType` (
+  `messageStatusId` int(10) NOT NULL auto_increment,
+  `messageStatus` varchar(25) NOT NULL,
+  PRIMARY KEY  (`messageStatusId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `messageStatusType`
+--
+
+LOCK TABLES `messageStatusType` WRITE;
+/*!40000 ALTER TABLE `messageStatusType` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messageStatusType` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `messageVariable`
+--
+
+DROP TABLE IF EXISTS `messageVariable`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `messageVariable` (
+  `msgVarId` int(10) NOT NULL auto_increment,
+  `msgVarTable` varchar(25) NOT NULL,
+  `msgVarColumn` varchar(35) NOT NULL,
+  PRIMARY KEY  (`msgVarId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `messageVariable`
+--
+
+LOCK TABLES `messageVariable` WRITE;
+/*!40000 ALTER TABLE `messageVariable` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messageVariable` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `procedure`
+--
+
+DROP TABLE IF EXISTS `procedure`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `procedure` (
+  `procedureId` int(10) NOT NULL auto_increment,
+  `messageId` int(10) default NULL,
+  `subscriberId` int(10) NOT NULL,
+  `procCategoryId` int(10) default NULL,
+  `procSteps` enum('one','two','recur') NOT NULL,
+  `procName` varchar(50) NOT NULL,
+  `priority` tinyint(1) NOT NULL,
+  `isGroupProc` tinyint(1) NOT NULL,
+  `isPractice` tinyint(1) NOT NULL,
+  `isActive` tinyint(1) NOT NULL,
+  `consolidate` tinyint(1) NOT NULL,
+  `sendOnDeath` tinyint(1) NOT NULL,
+  `refDateId` int(10) NOT NULL,
+  `offset` int(4) NOT NULL,
+  `anticipation` int(4) NOT NULL,
+  `singleRefDateId` int(10) NOT NULL,
+  `singleRefDateUsed` tinyint(1) NOT NULL,
+  `specieIdGenderCsvc` varchar(75) NOT NULL,
+  `criteriaBooleanIdCsvc` varchar(75) NOT NULL,
+  `unlessCriteriaDateIdCsvc` varchar(75) NOT NULL,
+  `criteriaQuantityIdCsvc` varchar(75) NOT NULL,
+  `groupSendDate` datetime NOT NULL,
+  `recurringPeriod` enum('1w','2w','3w','1m','2m','3m','6m','1y') NOT NULL,
+  `reminderCount` tinyint(1) NOT NULL,
+  `reminderMessageId1` int(10) NOT NULL,
+  `reminderMessageId2` int(10) NOT NULL,
+  `reminderCriteriaDateId` int(10) NOT NULL,
+  `reminderAfterNdays1` int(5) NOT NULL,
+  `reminderAfterNdays2` int(5) NOT NULL,
+  PRIMARY KEY  (`procedureId`),
+  KEY `messageId` (`messageId`),
+  KEY `subscriberId` (`subscriberId`),
+  KEY `procedure_ibfk_3` (`procCategoryId`),
+  KEY `procedure_ibfk_9` (`reminderCriteriaDateId`),
+  CONSTRAINT `procedure_ibfk_1` FOREIGN KEY (`messageId`) REFERENCES `message` (`messageId`),
+  CONSTRAINT `procedure_ibfk_2` FOREIGN KEY (`subscriberId`) REFERENCES `subscriber` (`subscriberId`),
+  CONSTRAINT `procedure_ibfk_3` FOREIGN KEY (`procCategoryId`) REFERENCES `category` (`categoryId`),
+  CONSTRAINT `procedure_ibfk_9` FOREIGN KEY (`reminderCriteriaDateId`) REFERENCES `criteriaDate` (`criteriaDateId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `procedure`
+--
+
+LOCK TABLES `procedure` WRITE;
+/*!40000 ALTER TABLE `procedure` DISABLE KEYS */;
+/*!40000 ALTER TABLE `procedure` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `race`
+--
+
+DROP TABLE IF EXISTS `race`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `race` (
+  `raceId` int(10) NOT NULL auto_increment,
+  `specieId` int(10) NOT NULL,
+  `raceName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`raceId`),
+  KEY `specieId` (`specieId`),
+  CONSTRAINT `race_ibfk_1` FOREIGN KEY (`specieId`) REFERENCES `specie` (`specieId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `race`
+--
+
+LOCK TABLES `race` WRITE;
+/*!40000 ALTER TABLE `race` DISABLE KEYS */;
+/*!40000 ALTER TABLE `race` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `specie`
+--
+
+DROP TABLE IF EXISTS `specie`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `specie` (
+  `specieId` int(10) NOT NULL auto_increment,
+  `specieName` varchar(35) NOT NULL,
+  PRIMARY KEY  (`specieId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `specie`
+--
+
+LOCK TABLES `specie` WRITE;
+/*!40000 ALTER TABLE `specie` DISABLE KEYS */;
+/*!40000 ALTER TABLE `specie` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscriber`
+--
+
+DROP TABLE IF EXISTS `subscriber`;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+CREATE TABLE `subscriber` (
+  `subscriberId` int(10) NOT NULL auto_increment,
+  `subscriberLogin` varchar(25) NOT NULL,
+  `subscriberPassword` varchar(50) NOT NULL,
+  `subscriberLanguage` varchar(2) NOT NULL,
+  `subscriberProfession` varchar(25) NOT NULL,
+  `subscriberEmail` varchar(75) NOT NULL,
+  PRIMARY KEY  (`subscriberId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Dumping data for table `subscriber`
+--
+
+LOCK TABLES `subscriber` WRITE;
+/*!40000 ALTER TABLE `subscriber` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subscriber` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2012-08-26 10:49:09

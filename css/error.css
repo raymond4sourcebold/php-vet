@@ -1,0 +1,8 @@
+/**
+ * error.css
+ */
+
+body {margin: 0 0; padding: 0 0;}
+.r_container {text-align:center; padding: 8px 0 20px 0; background-color: #FFDC5E}
+.r_error {margin: 10px 20px; padding: 10px 20px; border: 1px dashed red; background-color: #FFEEEE; text-align: left;}
+.r_errline {margin-left: 25px;}

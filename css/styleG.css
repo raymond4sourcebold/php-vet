@@ -1,0 +1,217 @@
+body {
+	background-color:#DDDDDD;
+	width:800px;
+	margin:auto;
+	background-image:url(/images/fond.png);
+	background-repeat:repeat-y;
+	background-position:center;
+}
+
+p {
+	margin:0;
+	padding:0;
+}
+
+#haut {
+	background-image: url(/images/haut.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	height:40px
+}
+
+#general {
+	width: 800px;
+	padding-top:30px;
+	padding-bottom:20px;
+}
+
+
+#logo {
+	background-image:url(/images/logo.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	width: 395px;
+	height: 76px;
+	margin-left:20px;
+}
+
+.imga {
+	border:none;
+}
+
+
+#headercontenu {
+	width:800px;
+	height:13px;
+	background-image:url(/images/fond2.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-top:20px;
+}
+
+#contenu {
+	width: 750px;
+	background-color:#DDDDDD;
+	margin:auto;
+}
+
+#contentsInside {
+	padding: 0 25px;
+	font-family: 'Times New Roman', Times, Arial;
+	font-size: 0.9em;
+	color: #333333;
+	text-align: justify;
+	line-height: 1.3em;
+}
+
+#contenutext {
+	padding-left:13px;
+	padding-right:13px;
+}
+
+#footer {
+	width:800px;
+	height:13px;
+	background-image:url(/images/fond3.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+
+#messagenotif {
+	font-weight: bold;
+	color: #FF0000;
+	text-align: center;
+}
+
+#tableaustart {
+	background-image: url(/images/tableaustart.png);
+	height: 14px;
+	width: 700px;
+	background-repeat: no-repeat;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#tableaustop {
+	background-image: url(/images/tableaustop.png);
+	height: 14px;
+	width: 700px;
+	background-repeat: no-repeat;
+	margin: auto;
+}
+
+
+
+/* CSS de l'infobull */
+a.info{
+    position: relative; 
+    z-index: 24;
+    color: #000000;
+    text-decoration: none;
+}
+
+a.info:hover { 
+	z-index: 25;
+	background-color: #6699CC;
+}
+
+a.info span {
+	display: none;
+}
+
+a.info:hover span { 
+	/*le contenu de la balise span ne sera visible que pour l'état a:hover */
+	display: block; 
+	position: absolute; 
+	top: 20px;
+	left: -200px;
+	width: 300px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #6699CC;
+	background-color: #EEEEEE;
+	color: #6699CC;
+	text-align: justify;
+	font-weight: none;
+	padding: 10px;
+}
+
+
+
+
+#tableaustart650 {
+	background-image: url(/images/tableaustart650.png);
+	height: 14px;
+	width: 650px;
+	background-repeat: no-repeat;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#tableaustop650 {
+	background-image: url(/images/tableaustop650.png);
+	height: 14px;
+	width: 650px;
+	background-repeat: no-repeat;
+	margin: auto;
+}
+
+
+
+
+#tableaustart650gris {
+	background-image: url(/images/tableaustart650gris.png);
+	height: 14px;
+	width: 650px;
+	background-repeat: no-repeat;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#tableaustop650gris {
+	background-image: url(/images/tableaustop650gris.png);
+	height: 14px;
+	width: 650px;
+	background-repeat: no-repeat;
+	margin: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.bloctabnom {
+	height: 20px;
+	float: left;
+	width: 210px;
+	text-align:center;
+}
+
+.bloctabprenom {
+	height: 20px;
+	float: left;
+	width: 200px;
+	text-align:center;
+}
+
+.bloctavilleb {
+	height: 20px;
+	float: left;
+	width: 200px;
+	text-align:center;
+}
+
+.bloctabmodif {
+	height: 20px;
+	float: left;
+	width: 16px;
+	text-align:center;
+}

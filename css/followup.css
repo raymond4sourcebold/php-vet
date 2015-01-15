@@ -1,0 +1,14 @@
+/**
+ * followup.css
+ */
+
+#animalName {font-weight: bold;}
+#ownerHonorary {font-weight: bold;}
+#ownerLastName {font-weight: bold;}
+
+.emphasize {
+	white-space: nowrap;
+	font-size: 0.9em; 
+	line-height: 1em; 
+	vertical-align: middle;
+}

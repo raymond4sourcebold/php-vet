@@ -1,0 +1,12 @@
+/**
+ * premind.css
+ */
+ 
+#taMsgText {
+/*	color: #F9F9F9;
+	background-color: #678DB2;*/
+	background-color: #EEEEDD;
+	font-family: 'Courier New' Arial;
+	padding: 7px 7px; border: 1px inset; height: 100px; overflow: auto;
+	font-size: 12px;
+}
